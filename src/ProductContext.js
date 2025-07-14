@@ -11,7 +11,7 @@ export function ProductProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:9494/products/getproducts")
+   fetch(`${process.env.REACT_APP_BACKEND_URL}/products/getproducts`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched products:", data); // ✅ helpful debug
