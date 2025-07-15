@@ -4,7 +4,7 @@ function ProductList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9494/products/getproduct")
+     fetch(`${process.env.REACT_APP_BACKEND_URL}/products/getproduct`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error(err));
