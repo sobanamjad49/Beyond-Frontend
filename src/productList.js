@@ -1,11 +1,12 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-     fetch(`${process.env.REACT_APP_BACKEND_URL}/products/getproduct`)
-      .then((res) => res.json())
+  axios.get(`${process.env.REACT_APP_BASE_URL}/products/getproducts`)
+.then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error(err));
   }, []);
