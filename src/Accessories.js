@@ -75,7 +75,7 @@ const DashboardProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:9494/products/getproducts");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/products/getproducts`);
       setProducts(res.data);
     } catch (err) {
       console.error(err);
@@ -99,9 +99,9 @@ const DashboardProducts = () => {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:9494/products/updateproduct/${editingId}`, form);
+        await axios.put(`${process.env.REACT_APP_BACKEND_URL}/products/updateproduct/${editingId}`, form);
       } else {
-        await axios.post("http://localhost:9494/products/addproduct", form);
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/products/addproduct`, form);
       }
 
       setForm(initialForm);
@@ -131,7 +131,7 @@ const DashboardProducts = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:9494/products/deleteproduct/${id}`);
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/products/deleteproduct/${id}`);
       fetchProducts();
     } catch (err) {
       console.error(err);
